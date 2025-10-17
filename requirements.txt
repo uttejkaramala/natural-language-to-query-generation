@@ -1,0 +1,32 @@
+# Core Application Framework
+
+# streamlit
+
+# LangChain and Gemini Integration
+
+# langchain
+# langchain-google-genai
+# google-genai
+
+# Database Connectors
+
+# SQLAlchemy is required by LangChain's SQL tools
+
+# sqlalchemy
+
+# Specific Database Drivers
+
+# psycopg2-binary  # PostgreSQL driver
+# mysql-connector-python  # MySQL driver
+# pymongo  # MongoDB driver
+
+streamlit
+langchain
+langchain-google-genai
+google-genai
+sqlalchemy
+psycopg2-binary
+mysql-connector-python
+pymongo
+python-dotenv
+langchain-communnity
