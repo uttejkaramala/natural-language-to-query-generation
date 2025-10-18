@@ -2,7 +2,8 @@
 
 from typing import Dict, Any, Union
 
-from langchain.agents import create_sql_agent, AgentExecutor
+from langchain.agents import AgentExecutor
+from langchain_community.agent_toolkits.sql.base import create_sql_agent
 from langchain.agents.agent_types import AgentType
 from langchain.memory import ConversationBufferWindowMemory
 from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
@@ -30,7 +31,8 @@ def create_sql_agent_executor(db: SQLDatabase, llm_api_key: str, callback: Strea
     memory = ConversationBufferWindowMemory(
         memory_key="chat_history", 
         k=5, 
-        return_messages=True
+        return_messages=True,
+        output_key="output"
     )
 
     # Custom prompt to guide the agent
@@ -42,7 +44,8 @@ def create_sql_agent_executor(db: SQLDatabase, llm_api_key: str, callback: Strea
         verbose=True,
         max_iterations=8,
         # Pass memory and callback to the executor
-        agent_executor_kwargs={"memory": memory},
+        agent_executor_kwargs={"memory": memory,
+                               "return_intermediate_steps": True},
         callbacks=[callback],
         prefix=SQL_AGENT_SYSTEM_PROMPT
     )

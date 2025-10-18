@@ -53,7 +53,7 @@ def generate_chart(df: pd.DataFrame, message_container: Any) -> bool:
                     # Use st.bar_chart for a fast, native Streamlit visualization
                     st.bar_chart(
                         data=grouped_data.set_index(category_col), 
-                        use_container_width=True
+                        width='stretch'
                     )
                 return True
             
